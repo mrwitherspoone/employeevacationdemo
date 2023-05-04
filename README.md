@@ -24,7 +24,8 @@ docker build -t employeevacationapp .
 docker run -d -p 4200:4200 -p 8080:8080 --name employeevacation employeevacationapp
 ```
 
-Alternatively these 2 services can be started outside of a container locally.  
+Alternatively these 2 services can be started outside of a container locally.
+You will need a local jre 17 and node 14 installed  
 To start the spring-boot service 
 ```bash
 cd employeeservice/
