@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="card">
+        <h3 class="text-center"> Employee List</h3>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <th>Id</th>
+                    <th> Role </th>
+                    <th> First Name</th>
+                    <th> Last Name</th>
+                    <th [colSpan]="2"> Days Worked </th>
+                    <th [colSpan]="2"> Vacation Days Available </th>
+
+                </thead>
+                <tbody>
+                    <tr *ngFor="let em of employee">
+                        <td> <a class="active" routerLinkActive="active" routerLink="/details/{{em.id}}">{{ em.id}}</a>
+                        </td>
+                        <td> {{ em.type }}</td>
+                        <td> {{ em.firstName}}</td>
+                        <td> {{ em.lastName}}</td>
+                        <td> {{ em.workedDays}}</td>
+                        <td> <a class="active" routerLinkActive="active" routerLink="/workform/{{em.id}}">Add Days</a>
+                        </td>
+                        <td> {{ em.vacationDays}}</td>
+                        <td>
+                            <div *ngIf="em.vacationDays > 0; else noVacation">
+                            <a class="active" routerLinkActive="active" routerLink="/vacation/{{em.id}}">Take Vacation</a>
+                            </div>
+                            <ng-template #noVacation>
+                                No Vacation Avail.
+                            </ng-template>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

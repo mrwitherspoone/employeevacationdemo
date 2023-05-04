@@ -1,0 +1,22 @@
+<div class="container" *ngIf="employee">
+  <div class="card">
+    <h3 class="text-center"> {{employee.firstName}} {{employee.lastName}} has {{employee.vacationDays}} available.</h3>
+    <div *ngIf="errorMessage" class="alert alert-warning">
+      <strong>Warning!</strong> {{errorMessage | json}}
+    </div>
+    <div *ngIf="daysAdded" class="success">
+      {{daysAdded | json}}
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #numberForm="ngForm">
+        <div class="form-group">
+          <label for="number">Vacation Taken:</label>
+          <input type="number" class="form-control" id="days" [(ngModel)]="days" name="days" required>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!numberForm.form.valid">Submit</button>
+      </form>
+
+
+    </div>
+  </div>
+</div>
