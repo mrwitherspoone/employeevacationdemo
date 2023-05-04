@@ -5,7 +5,8 @@ RUN mvn clean install
 
 FROM node:14 AS angular-build
 WORKDIR /app
-COPY ./employeeui/angularclient /app
+COPY ./employeeui/angularclient /
+RUN npm install
 RUN  ./node_modules/.bin/ng build
 
 # Stage 3: Setup NGINX for Angular frontend

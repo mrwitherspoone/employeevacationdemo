@@ -1,5 +1,7 @@
 package com.traviswalsh.employee;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public abstract class Employee {
     private String firstName;
@@ -82,7 +84,10 @@ public abstract class Employee {
     //because vacation days acruued aren't exactly divisible by max days
 
     protected float round(float days) {
-        return Math.round(days * 100)/100;
+        BigDecimal d = new BigDecimal(days);
+        d = d.setScale(3, RoundingMode.HALF_UP);
+        days = d.floatValue();
+        return days;
     }
 
 }

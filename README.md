@@ -38,6 +38,10 @@ cd employeeui/
 ./angularclient/node_modules/.bin/ng serve
 ```
 
+In wither of the above cases to see the app enter into your browser
+```
+http://localhost:4200/
+```
 
 
 ## Development
