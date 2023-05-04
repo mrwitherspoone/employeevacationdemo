@@ -35,6 +35,7 @@ To start the Angular app
 
 ```bash
 cd employeeui/
+npm intsall
 ./angularclient/node_modules/.bin/ng serve
 ```
 
