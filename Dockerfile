@@ -5,7 +5,7 @@ RUN mvn clean install
 
 FROM node:14 AS angular-build
 WORKDIR /app
-COPY ./employeeui/angularclient /
+COPY ./employeeui/angularclient /app
 RUN npm install
 RUN  ./node_modules/.bin/ng build
 
