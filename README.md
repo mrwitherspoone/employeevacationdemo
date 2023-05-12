@@ -3,7 +3,7 @@
 ## Description
 This is an app written with a spring-boot backend and an Angular frontend. The simple 
 frontend lists the employees as a table and has two functions, add days that an employee 
-worked, and subtract days when vacation is used.  On sucess of either the app goes 
+worked, and subtract days when vacation is used.  On success of either the app goes 
 back to the list with updated data. On start the service creates 10 instances of each type of employee hourly employees, salaried employees, and managers.
 
 ## Requirements
@@ -15,7 +15,7 @@ back to the list with updated data. On start the service creates 10 instances of
 
 
 ## Installation
-For simple installation Docker is recommened.  
+For simple installation Docker is recommended.  
 At the root of the application "employeevacationapp$"
 
 This will start a container that has both the spring-boot service and the angular app behind nginx

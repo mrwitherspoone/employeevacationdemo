@@ -50,6 +50,32 @@ public class EmployeeApplicationTests {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("261"))
                 .andExpect(status().is4xxClientError());
+		
+		//test values of vacation accrual
+        //hourly
+		mockMvc.perform(post("/{id}/work", 2)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("260"))
+                .andExpect(status().isOk());
+		mockMvc.perform(get("/{id}/employee", 2).accept(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())
+			.andExpect(jsonPath("$.vacationDays").value(10));
+		//salaried
+        mockMvc.perform(post("/{id}/work", testSalariedEmployeeId)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("260"))
+                .andExpect(status().isOk());
+		mockMvc.perform(get("/{id}/employee", testSalariedEmployeeId).accept(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())
+			.andExpect(jsonPath("$.vacationDays").value(15));
+		//manager
+		mockMvc.perform(post("/{id}/work", testManagerEmployeeId)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("260"))
+                .andExpect(status().isOk());
+		mockMvc.perform(get("/{id}/employee", testManagerEmployeeId).accept(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())
+			.andExpect(jsonPath("$.vacationDays").value(30));
     }
 
     @Test
@@ -71,7 +97,6 @@ public class EmployeeApplicationTests {
                 .content("100"))
                 .andExpect(status().is4xxClientError());
 
-        // You can add more assertions to verify the state of testEmployee
     }
 }
 
