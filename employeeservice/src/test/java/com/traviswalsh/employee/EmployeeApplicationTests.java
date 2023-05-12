@@ -89,7 +89,7 @@ public class EmployeeApplicationTests {
 		//now take vacation
         mockMvc.perform(post("/{id}/take-vacation", testHourlyEmployeeId)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("2"))
+                .content("2.3"))
                 .andExpect(status().isOk());
 		//take more vacation than is allowed
         mockMvc.perform(post("/{id}/take-vacation", testHourlyEmployeeId)
