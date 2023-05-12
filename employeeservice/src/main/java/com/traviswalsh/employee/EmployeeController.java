@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8080"})
+@CrossOrigin(origins = { "http://localhost:4200", "http://localhost:8080" })
 public class EmployeeController {
     private List<Employee> employees;
 
@@ -44,18 +45,31 @@ public class EmployeeController {
         return employees;
     }
 
+    @GetMapping("/{index}/employee")
+    public Employee getEmployee(@PathVariable int index) throws ResponseStatusException, EmployeeNotFoundException {
+        return getEmpl(index);
+    }
+
     @PostMapping("/{index}/work")
-    public void work(@PathVariable int index, @RequestBody int daysWorked) throws IllegalArgumentException {
-        
-        employees.get(index - 1  ).work(daysWorked);
-        
+    public void work(@PathVariable int index, @RequestBody int daysWorked)
+            throws IllegalArgumentException, EmployeeNotFoundException {
+
+        getEmpl(index).work(daysWorked);
+
     }
 
     @PostMapping("/{index}/take-vacation")
-    public void takeVacation(@PathVariable int index, @RequestBody float vacationDays) throws IllegalArgumentException {
-        employees.get(index - 1 ).takeVacation(vacationDays);
+    public void takeVacation(@PathVariable int index, @RequestBody float vacationDays)
+            throws IllegalArgumentException, EmployeeNotFoundException {
+        getEmpl(index).takeVacation(vacationDays);
     }
 
-
+    private Employee getEmpl(int index) throws EmployeeNotFoundException {
+        try {
+            return employees.get(index - 1);
+        } catch (Exception e) {
+            throw new EmployeeNotFoundException();
+        }
+    }
 
 }

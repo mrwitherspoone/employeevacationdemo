@@ -10,7 +10,7 @@ public class HourlyEmployee extends Employee {
         if (daysWorked >= 0 && daysWorked <= maxWorkedDays) {
             float newVacationDays = super.round(daysWorked * 10.0f / maxWorkedDays);
             super.setWorkedDays(daysWorked);
-            super.acrueVacation(-newVacationDays);
+            super.accrueVacation(-newVacationDays);
         } else {
             throw new IllegalArgumentException(super.overdays);
         }

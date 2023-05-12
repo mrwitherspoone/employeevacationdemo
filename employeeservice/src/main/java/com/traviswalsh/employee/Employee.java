@@ -34,7 +34,7 @@ public abstract class Employee {
      * add the number of days an employee worked
      * @param days
      */
-    // the decision to impliment this in each of the sunclasses
+    // the decision to implement this in each of the subclasses
     // when the logic is the same except for the hours
     // was made to give greater flexibility in the future for
     // more complex accrual models
@@ -59,7 +59,7 @@ public abstract class Employee {
 
     
     /** 
-     * subtract the days (or partial days) from an employyees accrued vacation time
+     * subtract the days (or partial days) from an employees accrued vacation time
      * @param days
      */
     protected void takeVacation(float days)  throws IllegalArgumentException {
@@ -69,7 +69,7 @@ public abstract class Employee {
         this.manageVacation(days);
     }
 
-    protected void acrueVacation(float days) throws IllegalArgumentException {
+    protected void accrueVacation(float days) throws IllegalArgumentException {
         this.manageVacation(days);
     }
 
@@ -81,7 +81,7 @@ public abstract class Employee {
         }
     }
     
-    //because vacation days acruued aren't exactly divisible by max days
+    //because vacation days accrued aren't exactly divisible by max days
 
     protected float round(float days) {
         BigDecimal d = new BigDecimal(days);
