@@ -18,7 +18,7 @@ COPY ./nginx.conf /etc/nginx/nginx.conf
 
 
 # Stage 4: Setup Spring Boot backend
-FROM eclipse-temurin:17-jdk-jammy AS backend
+FROM yobasystems/alpine-nginx AS backend
 COPY --from=spring-boot-build /app/target/employee-0.0.1-SNAPSHOT.jar /app.jar
 
 
